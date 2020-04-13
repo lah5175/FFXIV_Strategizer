@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./db');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,4 +19,5 @@ app.post('/api/world', (req, res) => {
   );
 });
 
+db.sync({force: true});
 app.listen(port, () => console.log(`Listening on port ${port}`));
