@@ -16,6 +16,8 @@ Users will be able to add other users as friends so they can share strategies be
 
 Users will be able to create and manage groups. They will be able to add others to their groups to collaborate on strategies that they have created. Users will be able to browse strategies that have been assigned to their group.
 
+---
+
 ## Strategies
 
 Users will be able to create and manage strategies. Strategies are comprised of the following:
