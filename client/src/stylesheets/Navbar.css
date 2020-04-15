@@ -7,17 +7,3 @@
   align-items: center;
   border: 1px solid black;
 }
-
-a {
-  color: white;
-  text-decoration: none;
-  width: 20%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-a:hover {
-  background-color: #BA2C73;
-}

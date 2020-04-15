@@ -1,0 +1,24 @@
+#signup-div {
+  z-index: 50;
+  position: fixed;
+  left: 33%;
+  top: 25%;
+  background-color: #453A49;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #BA2C73;
+}
+
+#signup-div div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: black;
+  background-color: #453A49;
+  margin: 10px;
+}

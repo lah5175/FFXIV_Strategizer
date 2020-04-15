@@ -14,3 +14,37 @@
 #app-content > div {
   border: 1px solid black;
 }
+
+input {
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin: 10px;
+  background-color: #BA2C73;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  align-self: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a:hover {
+  background-color: #BA2C73;
+}
