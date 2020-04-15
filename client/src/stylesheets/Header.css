@@ -37,3 +37,17 @@
   border: 1px solid white;
   border-radius: 5px;
 }
+
+#logout-btn {
+  background-color: #6D3B47;
+  width: 120px;
+  height: 52px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#logout-btn:hover {
+  background-color: #BA2C73;
+}

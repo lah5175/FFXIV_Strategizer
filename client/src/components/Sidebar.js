@@ -3,7 +3,7 @@ import '../stylesheets/Sidebar.css';
 
 const Sidebar = props => {
   return (
-    <div>
+    <div id="sidebar">
       <ul>
         <li>Test</li>
         <li>Test</li>

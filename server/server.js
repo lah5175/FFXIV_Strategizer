@@ -44,5 +44,5 @@ app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
-db.sync({force: true});
+db.sync();
 app.listen(port, () => console.log(`Listening on port ${port}`));

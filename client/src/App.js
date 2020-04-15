@@ -1,5 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {me} from './store';
 
 import logo from './logo.svg';
 import './stylesheets/App.css';
@@ -9,18 +11,28 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
-function App() {
-  return (
-    <div id="App">
-      <Header />
-      <div id="app-content">
-        <Sidebar />
-        <Main />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+class App extends React.Component {
+  componentDidMount() {
+    this.props.loadUser();
+  }
+
+  render() {
+    return (
+      <div id="App">
+        <Route path="/" component={Header}/>
+        <div id="app-content">
+          <Sidebar />
+          <Main />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  loadUser: () => dispatch(me()),
+})
+
+export default connect(null, mapDispatchToProps)(App);

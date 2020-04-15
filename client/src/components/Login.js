@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {fetchLoggedIn} from '../store';
 import '../stylesheets/Login.css';
 
 class Login extends React.Component {
@@ -11,6 +13,7 @@ class Login extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleChange(event) {
@@ -23,12 +26,18 @@ class Login extends React.Component {
     this.props.history.push("/");
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.fetchLoggedIn(this.state);
+    this.props.history.push('/');
+  }
+
   render() {
     return (
       <div id="login-div">
         <h1>Log In</h1>
 
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name">Username or email</label>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -47,4 +56,8 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => ({
+  fetchLoggedIn: data => dispatch(fetchLoggedIn(data)),
+})
+
+export default connect(null, mapDispatchToProps)(Login);

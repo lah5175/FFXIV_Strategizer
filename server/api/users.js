@@ -12,17 +12,6 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:userId', async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.params.userId);
-    if (user) res.json(user);
-    else res.sendStatus(404);
-  } 
-  catch (error) {
-    next(error);
-  }
-})
-
 router.post('/signup', async (req, res, next) => {
   try {
     const {username, email, password} = req.body;
@@ -41,22 +30,23 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   try {
-    const {uid, password} = req.body;
+    console.log('route')
+    const {name, password} = req.body;
     let user;
 
-    if (uid.includes('@')) {
-      user = await User.findOne({where: {email: uid}});
+    if (name.includes('@')) {
+      user = await User.findOne({where: {email: name}});
     }
     else {
-      user = await User.findOne({where: {username: uid}});
+      user = await User.findOne({where: {username: name}});
     }
 
     if (!user) {
-      console.error('No such user found: ', uid);
+      console.error('No such user found: ', name);
       res.status(401).json('Wrong username and/or password');
     }
     else if (!user.correctPassword(password)) {
-      console.error('Incorrect password for user', uid);
+      console.error('Incorrect password for user', name);
       res.status(401).json('Wrong username and/or password');
     }
     else {
@@ -76,6 +66,17 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/me', (req, res) => {
   res.json(req.user);
+})
+
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId);
+    if (user) res.json(user);
+    else res.sendStatus(404);
+  } 
+  catch (error) {
+    next(error);
+  }
 })
 
 router.put('/:userId', async (req, res, next) => {

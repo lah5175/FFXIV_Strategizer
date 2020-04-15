@@ -1,4 +1,5 @@
-div {
+#sidebar {
   width: 10%;
   background-color: #191D32;
+  border: 1px solid black;
 }
