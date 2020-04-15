@@ -31,12 +31,12 @@ class Login extends React.Component {
         <form>
           <div>
             <label htmlFor="name">Username or email</label>
-            <input type="text" name="name" value={this.state.name} handleChange={this.handleChange} />
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
           </div>
 
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" value={this.state.password} handleChange={this.handleChange} />
+            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
           </div>
 
           <button type="submit">Submit</button>

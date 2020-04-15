@@ -5,11 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Router} from 'react-router-dom';
 import history from './history';
+import store from './store';
+import {Provider} from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router history={history}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
