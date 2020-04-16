@@ -1,0 +1,31 @@
+#single-user-container {
+  width: 80%;
+}
+
+#user-div {
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  background-color: #282F44;
+  margin-bottom: 50px;
+}
+
+#user-info {
+  width: 70%;
+}
+
+#user-div > img {
+  height: 250px;
+  width: 250px;
+}
+
+#user-strategies {
+  background-color: #282F44;
+  min-height: 40%;
+  width: 100%;
+  padding-top: 10px;
+}
+
+#user-strategies > h1 {
+  margin-left: 50px;
+}

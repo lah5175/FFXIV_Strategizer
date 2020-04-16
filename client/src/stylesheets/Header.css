@@ -38,7 +38,7 @@
   border-radius: 5px;
 }
 
-#logout-btn {
+.header-button {
   background-color: #6D3B47;
   width: 120px;
   height: 52px;
@@ -48,6 +48,6 @@
   font-size: 14px;
 }
 
-#logout-btn:hover {
+.header-button:hover {
   background-color: #BA2C73;
 }

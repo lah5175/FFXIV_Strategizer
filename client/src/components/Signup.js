@@ -9,6 +9,7 @@ class Signup extends React.Component {
     this.state = {
       username: '',
       email: '',
+      server: '',
       password: '',
       confirmPassword: '',
     }
@@ -31,6 +32,13 @@ class Signup extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createNewUser(this.state);
+    this.setState({
+      username: '',
+      email: '',
+      server: '',
+      password: '',
+      confirmPassword: '',
+    })
     this.props.history.push('/');
   }
 
@@ -48,6 +56,11 @@ class Signup extends React.Component {
           <div>
             <label htmlFor="email">Email</label>
             <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+          </div>
+
+          <div>
+            <label htmlFor="server">Server</label>
+            <input type="text" name="server" value={this.state.server} onChange={this.handleChange} />
           </div>
 
           <div>

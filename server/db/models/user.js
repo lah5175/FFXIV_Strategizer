@@ -19,6 +19,17 @@ const User = db.define('user', {
       isEmail: true,
     }
   },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue: '/default-user-temp.png',
+  },
+  server: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    }
+  },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,

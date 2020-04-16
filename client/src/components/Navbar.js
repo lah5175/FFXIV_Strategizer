@@ -7,7 +7,7 @@ const Navbar = props => {
     <div id="navbar">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/">Strategies</NavLink>
-      <NavLink to="/">Groups</NavLink>
+      <NavLink to="/">Community</NavLink>
       <NavLink to="/">About</NavLink>
       <NavLink to="/">Contact</NavLink> 
     </div>

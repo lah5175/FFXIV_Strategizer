@@ -10,6 +10,11 @@ class Header extends React.Component {
     super();
 
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.accessAccount = this.accessAccount.bind(this);
+  }
+
+  accessAccount() {
+    this.props.history.push(`/users/${this.props.user.id}`);
   }
 
   handleLogOut() {
@@ -28,8 +33,8 @@ class Header extends React.Component {
             this.props.isLoggedIn
             ? (
               <div id="header-buttons">
-                <Link className="header-btn" to="/login">Account</Link>
-                <button type="button" id="logout-btn" onClick={this.handleLogOut}>Log Out</button>
+                <button type="button" className="header-button" onClick={this.accessAccount}>Account</button>
+                <button type="button" className="header-button" onClick={this.handleLogOut}>Log Out</button>
               </div>
             )
             : (
@@ -48,6 +53,7 @@ class Header extends React.Component {
 
 const mapStateToProps = state => ({
   isLoggedIn: !!state.user.id,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({

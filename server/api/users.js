@@ -14,8 +14,8 @@ router.get('/', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    const {username, email, password} = req.body;
-    const user = await User.create({username, email, password});
+    const {username, email, server, password} = req.body;
+    const user = await User.create({username, email, server, password});
     req.login(user, err => (err ? next(err) : res.json(user)));
   } 
   catch (error) {

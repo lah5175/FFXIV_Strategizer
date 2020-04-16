@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
+import SingleUser from './components/SingleUser';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,10 +22,9 @@ class App extends React.Component {
       <div id="App">
         <Route path="/" component={Header}/>
         <div id="app-content">
-          <Sidebar />
-          <Main />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
+          <Route path="/users/:userId" component={SingleUser} />
         </div>
       </div>
     );
