@@ -46,3 +46,7 @@ a {
 a:hover {
   background-color: #BA2C73;
 }
+
+.active {
+  background-color: #BA2C73;
+}

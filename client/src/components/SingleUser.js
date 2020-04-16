@@ -20,7 +20,7 @@ class SingleUser extends React.Component {
           </div>
         </div>
         <div id="user-strategies">
-          <h1>Strategies:</h1>
+          <h1>Strategies</h1>
         </div>
       </div>
     )
