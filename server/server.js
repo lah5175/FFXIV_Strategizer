@@ -39,6 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/users', require('./api/users'));
+app.use('/api/email', require('./api/email'));
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });

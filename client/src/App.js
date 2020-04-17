@@ -13,6 +13,8 @@ import Sidebar from './components/Sidebar';
 import SingleUser from './components/SingleUser';
 import Home from './components/Home';
 import About from './components/About';
+import FormSelect from './components/forms/FormSelect';
+import BugReport from './components/forms/BugReport';
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,6 +31,8 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/users/:userId" component={SingleUser} />
+          <Route exact path="/contact" component={FormSelect} />
+          <Route path="/contact/bugs" component={BugReport} />
         </div>
       </div>
     );

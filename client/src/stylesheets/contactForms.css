@@ -1,0 +1,49 @@
+.contact-link {
+  background-color: #6D3B47;
+  height: 30%;
+  width: 100%;
+  border: 1px solid white;
+}
+
+#contact-selector {
+  height: 200px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #282F44;
+  width: 40%;
+  padding: 100px;
+  padding-top: 50px;
+}
+
+.form-field-div {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-start;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-message-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-field-div > div {
+  width: 50%;
+  align-self: flex-start;
+}
+
+.form-message-div {
+  margin-bottom: 50px;
+}
+
+.form-message-div p {
+  font-size: 12px;
+  align-self: flex-end;
+}

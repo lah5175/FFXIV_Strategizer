@@ -19,6 +19,24 @@ input {
   padding: 5px;
 }
 
+select {
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+option {
+  color: black;
+}
+
+textarea {
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  height: 200px;
+}
+
 form {
   display: flex;
   flex-direction: column;
