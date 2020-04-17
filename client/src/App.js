@@ -12,6 +12,7 @@ import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 import SingleUser from './components/SingleUser';
 import Home from './components/Home';
+import About from './components/About';
 
 class App extends React.Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class App extends React.Component {
         <Route path="/" component={Header}/>
         <div id="app-content">
           <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/users/:userId" component={SingleUser} />
