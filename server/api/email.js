@@ -57,7 +57,7 @@ router.post('/', async (req, res, next) => {
       to: MY_EMAIL,
       subject: `[${type}]`,
       text: 
-        `Bug Report from ${email}:\nOrganization: ${organization}\nContact: ${name}\nMessage: ${message}`,
+        `Message from ${email}:\nOrganization: ${organization}\nContact: ${name}\nMessage: ${message}`,
     })
 
     console.log('Message sent: ', info.messageId);
