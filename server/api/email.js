@@ -51,4 +51,27 @@ router.post('/bugs', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try {
+    const {organization, name, email, message, type} = req.body;
+
+    const info = await transporter.sendMail({
+      from: email,
+      to: MY_EMAIL,
+      subject: `[${type}]`,
+      text: 
+        `Bug Report from ${email}:
+        Organization: ${organization}
+        Contact: ${name}
+        Message: ${message}`,
+    })
+
+    console.log('Message sent: ', info.messageId);
+    res.sendStatus(200);
+  } 
+  catch (error) {
+    next(error);
+  }
+})
+
 module.exports = router;

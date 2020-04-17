@@ -15,6 +15,7 @@ import Home from './components/Home';
 import About from './components/About';
 import FormSelect from './components/forms/FormSelect';
 import BugReport from './components/forms/BugReport';
+import GeneralForm from './components/forms/GeneralForm';
 
 class App extends React.Component {
   componentDidMount() {
@@ -33,6 +34,9 @@ class App extends React.Component {
           <Route path="/users/:userId" component={SingleUser} />
           <Route exact path="/contact" component={FormSelect} />
           <Route path="/contact/bugs" component={BugReport} />
+          <Route path="/contact/business" component={GeneralForm} />
+          <Route path="/contact/questions" component={GeneralForm} />
+          <Route path="/contact/suggestions" component={GeneralForm} />
         </div>
       </div>
     );
