@@ -1,13 +1,30 @@
 const nodemailer = require('nodemailer');
-const {MY_EMAIL, MY_PASSWORD} = require('../../secrets');
+const {OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_REFRESH_TOKEN, MY_EMAIL} = require('../../secrets');
 const express = require('express');
 const router = express.Router();
+const {google} = require('googleapis');
+
+const oauth2Client = new google.auth.OAuth2(
+  OAUTH_CLIENT_ID,
+  OAUTH_CLIENT_SECRET,
+  'https://developers.google.com/oauthplayground'
+);
+
+oauth2Client.setCredentials({
+  refresh_token: OAUTH_REFRESH_TOKEN
+});
+
+const accessToken = oauth2Client.getAccessToken();
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
+  service: 'gmail',
   auth: {
+    type: 'OAuth2',
     user: MY_EMAIL,
-    pass: MY_PASSWORD,
+    clientId: OAUTH_CLIENT_ID,
+    clientSecret: OAUTH_CLIENT_SECRET,
+    refreshToken: OAUTH_REFRESH_TOKEN,
+    accessToken
   }
 });
 
