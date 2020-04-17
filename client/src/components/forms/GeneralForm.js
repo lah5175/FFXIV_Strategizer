@@ -10,15 +10,21 @@ class GeneralForm extends React.Component {
       name: '',
       email: '',
       message: '',
+      messageChars: 0,
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
+    const chars = event.target.name === 'message'
+    ? event.target.value.length
+    : this.state.messageChars;
+
     this.setState({
       [event.target.name]: event.target.value,
+      messageChars: chars,
     })
   }
 

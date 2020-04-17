@@ -37,10 +37,7 @@ router.post('/bugs', async (req, res, next) => {
       to: MY_EMAIL,
       subject: '[Bug Report]',
       text: 
-        `Bug Report from ${email}:
-        Severity: ${severity}
-        Replicated: ${replicate}
-        Message: ${message}`,
+        `Bug Report from ${email}:\nSeverity: ${severity}\nReplicated: ${replicate}\nMessage: ${message}`,
     })
 
     console.log('Message sent: ', info.messageId);
@@ -60,10 +57,7 @@ router.post('/', async (req, res, next) => {
       to: MY_EMAIL,
       subject: `[${type}]`,
       text: 
-        `Bug Report from ${email}:
-        Organization: ${organization}
-        Contact: ${name}
-        Message: ${message}`,
+        `Bug Report from ${email}:\nOrganization: ${organization}\nContact: ${name}\nMessage: ${message}`,
     })
 
     console.log('Message sent: ', info.messageId);

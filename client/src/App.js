@@ -16,6 +16,7 @@ import About from './components/About';
 import FormSelect from './components/forms/FormSelect';
 import BugReport from './components/forms/BugReport';
 import GeneralForm from './components/forms/GeneralForm';
+import Community from './components/Community';
 
 class App extends React.Component {
   componentDidMount() {
@@ -37,6 +38,7 @@ class App extends React.Component {
           <Route path="/contact/business" component={GeneralForm} />
           <Route path="/contact/questions" component={GeneralForm} />
           <Route path="/contact/suggestions" component={GeneralForm} />
+          <Route path="/community" component={Community} />
         </div>
       </div>
     );

@@ -1,0 +1,11 @@
+#user-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#community-container {
+  text-align: center;
+  width: 80%;
+}

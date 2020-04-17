@@ -1,0 +1,24 @@
+.user-box {
+  background-color: #453A49;
+  border: 2px solid #BA2C73;
+  display: flex;
+  width: 400px;
+  padding: 10px;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.user-box:hover {
+  background-color: #BA2C73;
+}
+
+.user-small {
+  max-width: 100px;
+  height: auto;
+  border: 2px solid #BA2C73;
+}
+
+.user-box > div {
+  width: 70%;
+  text-align: start;
+}
