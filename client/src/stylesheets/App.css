@@ -29,6 +29,10 @@ option {
   color: black;
 }
 
+optgroup {
+  color: black;
+}
+
 textarea {
   color: black;
   border-radius: 5px;

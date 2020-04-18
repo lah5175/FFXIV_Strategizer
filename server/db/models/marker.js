@@ -26,7 +26,7 @@ const {
   B,
   C,
   D,
-} = require ('../../../constants');
+} = require ('../../../client/src/constants');
 
 const Marker = db.define('marker', {
   type: {

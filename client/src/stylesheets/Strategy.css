@@ -1,0 +1,28 @@
+#create-strategy-container {
+  background-color: #282F44;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+#create-strategy-form {
+  width: 70%;
+  margin-top: 50px;
+}
+
+#create-strategy-form > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.c-s-input-div {
+  width: 80%;
+}
+
+#create-strategy-form button {
+  margin-top: 50px;
+}
