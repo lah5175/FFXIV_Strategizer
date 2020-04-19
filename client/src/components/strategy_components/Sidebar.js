@@ -6,7 +6,7 @@ const Sidebar = props => {
   return (
     <div id="sidebar">
       {
-        props.phases.map(phase => <Phase phase={phase} />)
+        props.phases.map((phase, idx) => <Phase key={`phase${idx}`} phase={phase} />)
       }
     </div>
   )

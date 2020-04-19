@@ -14,7 +14,11 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:stratId', async (req, res, next) => {
   try {
-    const strategy = await Strategy.findByPk(req.params.stratId, {include: Phase});
+    const strategy = await Strategy.findByPk(req.params.stratId, {
+      include: Phase, 
+      order: [[Phase, 'id', 'ASC']]
+    });
+    
     if (strategy) res.json(strategy);
     else res.sendStatus(404);
   } 
@@ -39,6 +43,45 @@ router.post('/', async (req, res, next) => {
       include: [Phase]
     });
     res.json(strategy);
+  } 
+  catch (error) {
+    next(error);
+  }
+})
+
+router.post('/:stratId/phase', async (req, res, next) => {
+  try {
+    const phase = await Phase.create({name: 'Untitled Phase', strategyId: req.params.stratId});
+    res.json(phase);
+  } 
+  catch (error) {
+    next(error);
+  }
+})
+
+router.put('/phases/:phaseId', async (req, res, next) => {
+  try {
+    const phase = await Phase.findByPk(req.params.phaseId);
+    if (phase) {
+      phase.name = req.body.name;
+      await phase.save();
+      res.json(phase);
+    }
+    else res.sendStatus(404);
+  } 
+  catch (error) {
+    next(error);
+  }
+})
+
+router.delete('/phases/:phaseId', async (req, res, next) => {
+  try {
+    const phase = await Phase.findByPk(req.params.phaseId);
+    if (phase) {
+      await phase.destroy();
+      res.sendStatus(204);
+    }
+    else res.sendStatus(404);
   } 
   catch (error) {
     next(error);
