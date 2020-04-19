@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {addStrategy} from '../../store';
 import "../../stylesheets/Strategy.css";
 
-const {E1S, E2S, E3S, E4S,
+const { E1S, E2S, E3S, E4S,
         E5S, E6S, E7S, E8S,
         E1N, E2N, E3N, E4N,
         E5N, E6N, E7N, E8N,
@@ -24,6 +24,12 @@ class Strategy extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.singleStrategy.id !== prevProps.singleStrategy.id) {
+      this.props.history.push(`/strategies/${this.props.singleStrategy.id}`);
+    }
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -32,7 +38,7 @@ class Strategy extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addStrategy(this.state);
+    this.props.addStrategy({...this.state, user: this.props.user});
   }
 
   render() {
@@ -115,8 +121,13 @@ class Strategy extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user,
+  singleStrategy: state.strategy.singleStrategy
+})
+
 const mapDispatchToProps = dispatch => ({
   addStrategy: (strat) => dispatch(addStrategy(strat))
 })
 
-export default connect(null, mapDispatchToProps)(Strategy);
+export default connect(mapStateToProps, mapDispatchToProps)(Strategy);

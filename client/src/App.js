@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {me} from './store';
 
@@ -8,8 +8,6 @@ import './stylesheets/App.css';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Header from './components/Header';
-import Main from './components/Main';
-import Sidebar from './components/Sidebar';
 import SingleUser from './components/SingleUser';
 import Home from './components/Home';
 import About from './components/About';
@@ -18,6 +16,7 @@ import BugReport from './components/forms/BugReport';
 import GeneralForm from './components/forms/GeneralForm';
 import Community from './components/Community';
 import Strategy from './components/strategy_components/Strategy';
+import StratContainer from './components/strategy_components/StratContainer';
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,18 +28,21 @@ class App extends React.Component {
       <div id="App">
         <Route path="/" component={Header}/>
         <div id="app-content">
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/users/:userId" component={SingleUser} />
-          <Route exact path="/contact" component={FormSelect} />
-          <Route path="/contact/bugs" component={BugReport} />
-          <Route path="/contact/business" component={GeneralForm} />
-          <Route path="/contact/questions" component={GeneralForm} />
-          <Route path="/contact/suggestions" component={GeneralForm} />
-          <Route path="/community" component={Community} />
-          <Route path="/strategies/create" component={Strategy} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/users/:userId" component={SingleUser} />
+            <Route exact path="/contact" component={FormSelect} />
+            <Route path="/contact/bugs" component={BugReport} />
+            <Route path="/contact/business" component={GeneralForm} />
+            <Route path="/contact/questions" component={GeneralForm} />
+            <Route path="/contact/suggestions" component={GeneralForm} />
+            <Route path="/community" component={Community} />
+            <Route path="/strategies/create" component={Strategy} />
+            <Route path="/strategies/:stratId" component={StratContainer} />
+          </Switch>
         </div>
       </div>
     );

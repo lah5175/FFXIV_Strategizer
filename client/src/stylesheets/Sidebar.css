@@ -1,5 +1,26 @@
 #sidebar {
-  width: 10%;
+  width: 15%;
   background-color: #191D32;
   border: 1px solid black;
+}
+
+.phase-div {
+  background-color: #453A49;
+  border: 1px solid #BA2C73;
+  height: 100px;
+  padding: 10px;
+}
+
+.phase-div:hover {
+  cursor: pointer;
+  background-color: #BA2C73;
+}
+
+.phase-div h3 {
+  margin-top: 0px;
+}
+
+.phase-div button {
+  width: 70px;
+  height: 40px;
 }
