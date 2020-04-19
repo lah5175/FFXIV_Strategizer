@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addStrategy} from '../../store';
 import "../../stylesheets/Strategy.css";
 
 const {E1S, E2S, E3S, E4S,
@@ -19,6 +21,7 @@ class Strategy extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -27,11 +30,16 @@ class Strategy extends React.Component {
     })
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.addStrategy(this.state);
+  }
+
   render() {
     return (
       <div id="create-strategy-container">
         <h1>Create a New Strategy</h1>
-        <form id="create-strategy-form">
+        <form id="create-strategy-form" onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name">Strategy Name</label>
             <div className="c-s-input-div">
@@ -107,4 +115,8 @@ class Strategy extends React.Component {
   }
 }
 
-export default Strategy;
+const mapDispatchToProps = dispatch => ({
+  addStrategy: (strat) => dispatch(addStrategy(strat))
+})
+
+export default connect(null, mapDispatchToProps)(Strategy);

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {Strategy} = require('../db');
+const {Strategy} = require('../db/models');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -26,7 +26,7 @@ router.get('/:stratId', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const {name, encounter, visibility, arena} = req.body;
-    const strategy = await Strategy.create({where: {name, encounter, visibility, arena}});
+    const strategy = await Strategy.create({name, encounter, visibility, arena});
     res.json(strategy);
   } 
   catch (error) {
