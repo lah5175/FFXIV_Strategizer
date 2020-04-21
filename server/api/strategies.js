@@ -16,7 +16,10 @@ router.get('/:stratId', async (req, res, next) => {
   try {
     const strategy = await Strategy.findByPk(req.params.stratId, {
       include: [{model: Phase, include: [Step]}], 
-      order: [[Phase, 'id', 'ASC']]
+      order: [
+        [Phase, 'id', 'ASC'],
+        [Phase, Step, 'number', 'ASC']
+      ]
     });
     
     if (strategy) res.json(strategy);

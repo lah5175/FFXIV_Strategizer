@@ -6,8 +6,8 @@
 }
 
 .phase-div {
-  background-color: #453A49;
-  border: 1px solid #BA2C73;
+  background-color: #6d3b47;
+  border: 1px solid white;
   height: 100px;
   padding: 10px;
 }
@@ -33,4 +33,16 @@
   width: 70px;
   height: 40px;
   margin-left: 0px;
+}
+
+.step-div {
+  width: 100%;
+  border: 1px solid white;
+  background-color: #453a49;
+  text-align: center;
+}
+
+.step-div:hover {
+  background-color: #BA2C73;
+  cursor: pointer;
 }

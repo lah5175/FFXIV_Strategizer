@@ -16,7 +16,7 @@ Strategy.belongsTo(Group);
 Strategy.hasMany(Phase);
 Phase.belongsTo(Strategy);
 
-Phase.hasMany(Step);
+Phase.hasMany(Step, {onDelete: 'cascade'});
 Step.belongsTo(Phase);
 
 User.belongsToMany(User, {through: 'friends', as: 'friend'});

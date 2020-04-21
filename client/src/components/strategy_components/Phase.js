@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import '../../stylesheets/Sidebar.css';
 import { addPhaseThunk, updatePhaseThunk, deletePhaseThunk, addStepThunk, selectPhase } from '../../store';
+import Step from './Step';
 
 class Phase extends React.Component {
   constructor() {
@@ -69,7 +70,7 @@ class Phase extends React.Component {
            (
               <div className="steps">
                 {this.props.phase.steps && this.props.phase.steps.map(step => {
-                  return <div key={`step${step.id}`} className="step-div">{step.number}</div>
+                  return <Step key={`step${step.id}`} step={step}/>
                 })}
               </div>
             )
