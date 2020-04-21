@@ -17,11 +17,19 @@
   background-color: #BA2C73;
 }
 
-.phase-div h3 {
-  margin-top: 0px;
+.phase-selected {
+  border: 1px solid white;
+  background-color: #BA2C73;
+  height: 100px;
+  padding: 10px;
 }
 
-.phase-div button {
+.phase-container h3 {
+  display: inline;
+
+}
+
+.phase-container button {
   width: 70px;
   height: 40px;
   margin-left: 0px;

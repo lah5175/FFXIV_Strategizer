@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const initialState = {
   allStrategies: [],
-  singleStrategy: {}
+  singleStrategy: {},
+  phase: {}
 }
 
 // action constants
@@ -12,6 +13,7 @@ const SET_SINGLE_STRATEGY = 'SET_SINGLE_STRATEGY';
 const ADD_PHASE = 'ADD_PHASE';
 const UPDATE_PHASE = 'UPDATE_PHASE';
 const DELETE_PHASE = 'DELETE_PHASE';
+const SELECT_PHASE = 'SELECT_PHASE';
 
 // action creators
 
@@ -38,6 +40,11 @@ const updatePhase = phase => ({
 const deletePhase = phaseId => ({
   type: DELETE_PHASE,
   phaseId
+})
+
+export const selectPhase = phase => ({
+  type: SELECT_PHASE,
+  phase
 })
 
 // thunks
@@ -102,6 +109,27 @@ export const deletePhaseThunk = phaseId => async dispatch => {
   }
 }
 
+export const getPhaseThunk = phaseId => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/strategies/phases/${phaseId}`);
+    dispatch(selectPhase(data));
+  } 
+  catch (error) {
+    console.error(error);
+  }
+}
+
+export const addStepThunk = (stratId, phaseId, stepId) => async dispatch => {
+  try {
+    const {data} = await axios.post(`/api/strategies/${stratId}/phases/${phaseId}/steps/${stepId}`);
+    console.log(data)
+    dispatch(updatePhase(data));
+  } 
+  catch (error) {
+    console.error(error);
+  }
+}
+
 // reducer
 
 const reducer = (state = initialState, action) => {
@@ -116,11 +144,13 @@ const reducer = (state = initialState, action) => {
     case UPDATE_PHASE:
       let updatedPhaseStrat = {...state.singleStrategy};
       updatedPhaseStrat.phases = updatedPhaseStrat.phases.map(phase => phase.id === action.phase.id ? action.phase : phase);
-      return {...state, singleStrategy: updatedPhaseStrat};
+      return {...state, singleStrategy: updatedPhaseStrat, phase: action.phase};
     case DELETE_PHASE:
       let deletedPhaseStrat = {...state.singleStrategy};
       deletedPhaseStrat.phases = deletedPhaseStrat.phases.filter(phase => phase.id !== action.phaseId);
       return {...state, singleStrategy: deletedPhaseStrat};
+    case SELECT_PHASE:
+      return {...state, phase: action.phase};
     default:
       return state;
   }

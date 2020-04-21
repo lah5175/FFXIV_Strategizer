@@ -42,9 +42,5 @@ app.use('/api/users', require('./api/users'));
 app.use('/api/email', require('./api/email'));
 app.use('/api/strategies', require('./api/strategies'));
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
 db.sync();
 app.listen(port, () => console.log(`Listening on port ${port}`));

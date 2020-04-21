@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {Strategy, Phase} = require('../db/models');
+const {Strategy, Phase, Step} = require('../db/models');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -27,6 +27,17 @@ router.get('/:stratId', async (req, res, next) => {
   }
 })
 
+router.get('/phases/:phaseId', async(req, res, next) => {
+  try {
+    const phase = await Phase.findByPk(req.params.phaseId, {include: [Step]});
+    if (phase) res.json(phase);
+    else res.sendStatus(404);
+  } 
+  catch (error) {
+    next(error);
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
     const {name, encounter, visibility, arena, user} = req.body; 
@@ -42,6 +53,7 @@ router.post('/', async (req, res, next) => {
     },{
       include: [Phase]
     });
+
     res.json(strategy);
   } 
   catch (error) {
@@ -51,7 +63,30 @@ router.post('/', async (req, res, next) => {
 
 router.post('/:stratId/phase', async (req, res, next) => {
   try {
-    const phase = await Phase.create({name: 'Untitled Phase', strategyId: req.params.stratId});
+    const phase = await Phase.create({
+      name: 'Untitled Phase', strategyId: req.params.stratId,
+      steps: [
+        {number: 1}
+      ]
+    });
+    res.json(phase);
+  } 
+  catch (error) {
+    next(error);
+  }
+})
+
+router.post('/:stratId/phases/:phaseId/steps/:stepId', async (req, res, next) => {
+  try {
+    const [step, created] = await Step.findOrCreate({
+      where: {
+        number: +req.params.stepId,
+        phaseId: +req.params.phaseId
+      }
+    })
+
+    const phase = await Phase.findByPk(req.params.phaseId, {include: [Step]});
+
     res.json(phase);
   } 
   catch (error) {
