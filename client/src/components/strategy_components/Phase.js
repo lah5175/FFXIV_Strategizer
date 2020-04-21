@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import '../../stylesheets/Sidebar.css';
-import { addPhaseThunk, updatePhaseThunk, deletePhaseThunk, addStepThunk, getPhaseThunk } from '../../store';
+import { addPhaseThunk, updatePhaseThunk, deletePhaseThunk, addStepThunk, selectPhase } from '../../store';
 
 class Phase extends React.Component {
   constructor() {
@@ -39,12 +39,12 @@ class Phase extends React.Component {
   }
 
   handleSelect() {
-    this.props.getPhase(this.props.phase.id);
+    this.props.selectPhase(this.props.phase);
   }
 
   handleAddStep() {
     let nextStep = 1;
-    if (this.props.steps) nextStep = this.props.steps.length + 1;
+    if (this.props.phase.steps) nextStep = this.props.phase.steps.length + 1;
     this.props.addStep(this.props.stratId, this.props.phase.id, nextStep)
   }
 
@@ -68,7 +68,7 @@ class Phase extends React.Component {
           selected &&
            (
               <div className="steps">
-                {this.props.steps.map(step => {
+                {this.props.phase.steps && this.props.phase.steps.map(step => {
                   return <div key={`step${step.id}`} className="step-div">{step.number}</div>
                 })}
               </div>
@@ -81,7 +81,6 @@ class Phase extends React.Component {
 
 const mapStateToProps = state => ({
   stratId: state.strategy.singleStrategy.id,
-  steps: state.strategy.phase.steps,
   phaseId: state.strategy.phase.id,
 })
 
@@ -90,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
   updatePhase: (phase) => dispatch(updatePhaseThunk(phase)),
   deletePhase: (phaseId) => dispatch(deletePhaseThunk(phaseId)),
   addStep: (stratId, phaseId, stepId) => dispatch(addStepThunk(stratId, phaseId, stepId)),
-  getPhase: (phaseId) => dispatch(getPhaseThunk(phaseId)) 
+  selectPhase: phase => dispatch(selectPhase(phase)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Phase)

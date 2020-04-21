@@ -109,16 +109,6 @@ export const deletePhaseThunk = phaseId => async dispatch => {
   }
 }
 
-export const getPhaseThunk = phaseId => async dispatch => {
-  try {
-    const {data} = await axios.get(`/api/strategies/phases/${phaseId}`);
-    dispatch(selectPhase(data));
-  } 
-  catch (error) {
-    console.error(error);
-  }
-}
-
 export const addStepThunk = (stratId, phaseId, stepId) => async dispatch => {
   try {
     const {data} = await axios.post(`/api/strategies/${stratId}/phases/${phaseId}/steps/${stepId}`);

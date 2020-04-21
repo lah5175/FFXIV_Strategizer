@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:stratId', async (req, res, next) => {
   try {
     const strategy = await Strategy.findByPk(req.params.stratId, {
-      include: Phase, 
+      include: [{model: Phase, include: [Step]}], 
       order: [[Phase, 'id', 'ASC']]
     });
     
@@ -24,17 +24,6 @@ router.get('/:stratId', async (req, res, next) => {
   } 
   catch (error) {
     next(error)
-  }
-})
-
-router.get('/phases/:phaseId', async(req, res, next) => {
-  try {
-    const phase = await Phase.findByPk(req.params.phaseId, {include: [Step]});
-    if (phase) res.json(phase);
-    else res.sendStatus(404);
-  } 
-  catch (error) {
-    next(error);
   }
 })
 
